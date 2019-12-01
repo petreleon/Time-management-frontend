@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, NgForm } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from 'src/app/shared/services/auth.service';
@@ -11,13 +11,14 @@ import { LoginData } from '../../models/login-data.model';
 })
 export class LoginPage implements OnInit {
   form: FormGroup;
+  @ViewChild('loginForm', { static: true }) loginForm: HTMLFormElement;
 
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService
   ) {
     this.form = this.formBuilder.group({
-      email: ['', Validators.required],
+      userName: ['', Validators.required],
       password: ['', Validators.required],
     });
   }
@@ -34,6 +35,8 @@ export class LoginPage implements OnInit {
 
     this.authService.login(data).subscribe(result => {
       console.log(result);
+    }, (error) => {
+      this.form.setErrors({invalidCredentiales: true});
     });
   }
 }
