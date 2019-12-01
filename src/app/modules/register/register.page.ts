@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, NgForm } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, NgForm, AbstractControl } from '@angular/forms';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { RegisterData } from 'src/app/models/register-data.model';
 
@@ -18,11 +18,11 @@ export class RegisterPage implements OnInit {
     this.form = this.formBuilder.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
-      username: ['', Validators.required],
-      email: ['', Validators.required],
+      userName: ['', Validators.required],
+      emailAddress: ['', Validators.required],
       password: ['', Validators.required],
       confirmPassword: ['', Validators.required]
-    });
+    }, {validator: this.matchingPasswords('password', 'confirmPassword')});
   }
 
   ngOnInit() {
@@ -31,12 +31,29 @@ export class RegisterPage implements OnInit {
   onRegister(form: NgForm) {
     console.log(form);
     const data: RegisterData = {
-      email: form.value.email,
-      password: form.value.password
+      firstName: form.value.firstName,
+      lastName: form.value.lastName,
+      userName: form.value.userName,
+      emailAddress: form.value.emailAddress,
+      password: form.value.password,
+      confirmPassword: form.value.confirmPassword
     };
 
-    this.authService.login(data).subscribe(result => {
+    this.authService.register(data).subscribe(result => {
       console.log(result);
     });
+  }
+
+  matchingPasswords(passwordKey: string, confirmPasswordKey: string) {
+    return (group: FormGroup): {[key: string]: any} => {
+      const password = group.controls[passwordKey];
+      const confirmPassword = group.controls[confirmPasswordKey];
+
+      if (password.value !== confirmPassword.value) {
+        return {
+          mismatchedPasswords: true
+        };
+      }
+    }
   }
 }
