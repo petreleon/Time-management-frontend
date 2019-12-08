@@ -15,24 +15,15 @@
 
       <ion-card-content>
         <form [formGroup]="form" #loginForm="ngForm">
-          <!-- <ion-item class="ion-no-padding">
+          <ion-item class="ion-no-padding">
             <ion-label position="floating">Email</ion-label>
             <ion-input type="email" autocomplete formControlName="email"></ion-input>
           </ion-item>
-          <div *ngIf="form.controls['email'].errors && (!form.controls['email'].pristine || form.controls['email'].dirty || form.controls['email'].touched)" class="error-msg">
-            <div [hidden]="!form.controls['email'].errors.required">Email is required</div>
-          </div> -->
-
-          <ion-item class="ion-no-padding">
-            <ion-label position="floating">Username</ion-label>
-            <ion-input type="text" autocomplete formControlName="userName"></ion-input>
-          </ion-item>
-          <div
-            *ngIf="form.get('userName').hasError('required') && (!form.get('userName').pristine || form.get('userName').dirty || form.get('userName').touched)"
+          <div *ngIf="form.controls['email'].errors && (!form.controls['email'].pristine || form.controls['email'].dirty || form.controls['email'].touched)"
             class="error-msg">
-            Username is required
+            Email is required
           </div>
-  
+
           <ion-item class="ion-no-padding">
             <ion-label position="floating">Password</ion-label>
             <ion-input type="password" autocomplete formControlName="password"></ion-input>

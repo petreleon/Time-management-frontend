@@ -18,7 +18,7 @@ export class LoginPage implements OnInit {
     private authService: AuthService
   ) {
     this.form = this.formBuilder.group({
-      userName: ['', Validators.required],
+      email: ['', Validators.required],
       password: ['', Validators.required],
     });
   }
@@ -29,7 +29,7 @@ export class LoginPage implements OnInit {
   onLogin(form: NgForm) {
     console.log(form);
     const data: LoginData = {
-      userName: form.value.userName,
+      email: form.value.email,
       password: form.value.password
     };
 

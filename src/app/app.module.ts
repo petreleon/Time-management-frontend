@@ -13,7 +13,11 @@ import { AuthService } from './shared/services/auth.service';
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    IonicModule.forRoot(),
+  ],
   providers: [
     StatusBar,
     SplashScreen,
