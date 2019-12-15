@@ -1,0 +1,27 @@
+.container-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  .logo {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+.container-login-page {
+  background: linear-gradient(to top, #1a2980, #26d0ce);
+}
+
+.card-login {
+  background: white !important;
+  .login {
+    width: 130px;
+  }
+  .register {
+    width: 130px;
+  }
+  .error-msg {
+    color: red;
+  }
+}

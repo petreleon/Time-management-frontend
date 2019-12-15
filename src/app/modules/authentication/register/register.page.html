@@ -1,4 +1,7 @@
-<ion-content class="container-login-page" color="background: linear-gradient(to top, #1a2980, #26d0ce);">
+<ion-content
+  class="container-login-page"
+  color="background: linear-gradient(to top, #1a2980, #26d0ce);"
+>
   <ion-grid>
     <ion-row>
       <ion-col>
@@ -21,83 +24,145 @@
           </ion-item>
           <div
             *ngIf="form.get('firstName').hasError('required') && (!form.get('firstName').pristine || form.get('firstName').dirty || form.get('firstName').touched)"
-            class="error-msg">
+            class="error-msg"
+          >
             First name is required
           </div>
-  
+          <div
+            *ngIf="form.get('firstName').hasError('pattern') && (!form.get('firstName').pristine || form.get('firstName').dirty || form.get('firstName').touched)"
+            class="error-msg"
+          >
+            First name pattern is invalid
+          </div>
+          <div
+            *ngIf="form.get('firstName').hasError('maxLength') && (!form.get('firstName').pristine || form.get('firstName').dirty || form.get('firstName').touched)"
+            class="error-msg"
+          >
+            The field exceed maximum length of {{ Constants.MAX_LENGTH_30 }}
+          </div>
+
           <ion-item class="ion-no-padding">
             <ion-label position="floating">Last name</ion-label>
             <ion-input type="text" formControlName="lastName"></ion-input>
           </ion-item>
           <div
             *ngIf="form.get('lastName').hasError('required') && (!form.get('lastName').pristine || form.get('lastName').dirty || form.get('lastName').touched)"
-            class="error-msg">
+            class="error-msg"
+          >
             Last name is required
           </div>
-  
+          <div
+            *ngIf="form.get('lastName').hasError('pattern') && (!form.get('lastName').pristine || form.get('lastName').dirty || form.get('lastName').touched)"
+            class="error-msg"
+          >
+            Last name pattern is invalid
+          </div>
+          <div
+            *ngIf="form.get('lastName').hasError('maxLength') && (!form.get('lastName').pristine || form.get('lastName').dirty || form.get('lastName').touched)"
+            class="error-msg"
+          >
+            The field exceed maximum length of {{ Constants.MAX_LENGTH_30 }}
+          </div>
+          
           <ion-item class="ion-no-padding">
             <ion-label position="floating">Username</ion-label>
             <ion-input type="text" formControlName="userName"></ion-input>
           </ion-item>
           <div
             *ngIf="form.get('userName').hasError('required') && (!form.get('userName').pristine || form.get('userName').dirty || form.get('userName').touched)"
-            class="error-msg">
+            class="error-msg"
+          >
             Username is required
           </div>
-  
+          <div
+            *ngIf="form.get('userName').hasError('pattern') && (!form.get('userName').pristine || form.get('userName').dirty || form.get('userName').touched)"
+            class="error-msg"
+          >
+            Username pattern is invalid
+          </div>
+
           <ion-item class="ion-no-padding">
             <ion-label position="floating">Email</ion-label>
-            <ion-input type="email" formControlName="emailAddress" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"></ion-input>
+            <ion-input
+              type="email"
+              formControlName="emailAddress"
+              pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+            ></ion-input>
           </ion-item>
           <div
             *ngIf="form.get('emailAddress').hasError('pattern') && (!form.get('emailAddress').pristine || form.get('emailAddress').dirty || form.get('emailAddress').touched)"
-            class="error-msg">
-            Email is pattern
+            class="error-msg"
+          >
+            Email pattern is invalid
           </div>
           <div
             *ngIf="form.get('emailAddress').hasError('required') && (!form.get('emailAddress').pristine || form.get('emailAddress').dirty || form.get('emailAddress').touched)"
-            class="error-msg">
+            class="error-msg"
+          >
             Email is required
           </div>
-  
+
           <ion-item class="ion-no-padding">
             <ion-label position="floating">Password</ion-label>
             <ion-input type="password" formControlName="password"></ion-input>
           </ion-item>
           <div
             *ngIf="form.get('password').hasError('required') && (!form.get('password').pristine || form.get('password').dirty || form.get('password').touched)"
-            class="error-msg">
+            class="error-msg"
+          >
             Password is required
           </div>
-  
+          <div
+            *ngIf="form.get('password').hasError('pattern') && (!form.get('password').pristine || form.get('password').dirty || form.get('password').touched)"
+            class="error-msg"
+          >
+            Password pattern is invalid
+          </div>
+
           <ion-item class="ion-no-padding">
             <ion-label position="floating">Confirm password</ion-label>
-            <ion-input type="password" formControlName="confirmPassword"></ion-input>
+            <ion-input
+              type="password"
+              formControlName="confirmPassword"
+            ></ion-input>
           </ion-item>
           <div
             *ngIf="form.get('confirmPassword').hasError('required') && (!form.get('confirmPassword').pristine || form.get('confirmPassword').dirty || form.get('confirmPassword').touched)"
-            class="error-msg">
+            class="error-msg"
+          >
             Confirm password is required
           </div>
           <div
             *ngIf="form.getError('mismatchedPasswords') && (!form.get('confirmPassword').pristine || form.get('confirmPassword').dirty || form.get('confirmPassword').touched)"
-            class="error-msg">
+            class="error-msg"
+          >
             Confirm password not match.
           </div>
         </form>
 
-        <br>
+        <br />
 
         <ion-row>
           <ion-col>
-            <ion-button class="register" color="secondary" [disabled]="!form.valid" (click)="onRegister(form)">Register</ion-button> 
+            <ion-button
+              class="register"
+              color="secondary"
+              [disabled]="!form.valid"
+              (click)="onRegister(form)"
+              >Register</ion-button
+            >
           </ion-col>
           <ion-col>
-            <ion-button [routerLink]="['/login']" color="light" class="login ion-float-right">Login <ion-icon name="arrow-forward"></ion-icon></ion-button>
+            <ion-button
+              [routerLink]="['/login']"
+              color="light"
+              class="login ion-float-right"
+              >Login <ion-icon name="arrow-forward"></ion-icon
+            ></ion-button>
           </ion-col>
         </ion-row>
-        
-        <br>
+
+        <br />
         <ion-row>
           <ion-col>
             <ion-fab-button color="danger">
@@ -127,5 +192,3 @@
     </ion-card>
   </ion-grid>
 </ion-content>
-  
-  

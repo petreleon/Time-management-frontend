@@ -7,8 +7,10 @@ const routes: Routes = [
     loadChildren: './modules/tabs/tabs.module#TabsPageModule'
   },
   // { path: 'home', loadChildren: () => import('./modules/home/home.module').then( m => m.HomePageModule)},
-  { path: 'login', loadChildren: './modules/login/login.module#LoginPageModule' },
-  { path: 'register', loadChildren: './modules/register/register.module#RegisterPageModule' },
+  { path: 'login', loadChildren: './modules/authentication/login/login.module#LoginPageModule' },
+  { path: 'register', loadChildren: './modules/authentication/register/register.module#RegisterPageModule' },
+  { path: 'forgot-password', loadChildren: './modules/authentication/forgot-password/forgot-password.module#ForgotPasswordModule' },
+  { path: 'task', loadChildren: './modules/task/task.module#TaskPageModule' }
 ];
 
 @NgModule({

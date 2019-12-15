@@ -1,4 +1,7 @@
-<ion-content class="container-login-page" color="background: linear-gradient(to top, #1a2980, #26d0ce);">
+<ion-content
+  class="container-login-page"
+  color="background: linear-gradient(to top, #1a2980, #26d0ce);"
+>
   <ion-grid>
     <ion-row>
       <ion-col>
@@ -17,43 +20,62 @@
         <form [formGroup]="form" #loginForm="ngForm">
           <ion-item class="ion-no-padding">
             <ion-label position="floating">Email</ion-label>
-            <ion-input type="email" autocomplete formControlName="email"></ion-input>
+            <ion-input
+              type="email"
+              autocomplete
+              formControlName="email"
+            ></ion-input>
           </ion-item>
-          <div *ngIf="form.controls['email'].errors && (!form.controls['email'].pristine || form.controls['email'].dirty || form.controls['email'].touched)"
-            class="error-msg">
+          <div
+            *ngIf="form.controls['email'].errors && (!form.controls['email'].pristine || form.controls['email'].dirty || form.controls['email'].touched)"
+            class="error-msg"
+          >
             Email is required
           </div>
 
           <ion-item class="ion-no-padding">
             <ion-label position="floating">Password</ion-label>
-            <ion-input type="password" autocomplete formControlName="password"></ion-input>
+            <ion-input
+              type="password"
+              autocomplete
+              formControlName="password"
+            ></ion-input>
           </ion-item>
           <div
             *ngIf="form.get('password').hasError('required') && (!form.get('password').pristine || form.get('password').dirty || form.get('password').touched)"
-            class="error-msg">
+            class="error-msg"
+          >
             Password is required
           </div>
 
-          <div *ngIf="form.getError('invalidCredentiales') && !form.valid" class="error-msg">
-              Please enter valid credentiales
+          <div
+            *ngIf="form.getError('invalidCredentiales') && !form.valid"
+            class="error-msg"
+          >
+            Please enter valid credentiales
           </div>
         </form>
-       
-        <br>
 
-        <ion-title color="secondary" class="forgot-password">Forgot password?</ion-title>
-        <br>
+        <br />
+
+        <ion-title
+          routerLink="/forgot-password"
+          color="secondary"
+          class="forgot-password"
+          >Forgot password?</ion-title
+        >
+        <br />
 
         <ion-row>
           <ion-col>
             <ion-button
-            class="login"
-            color="secondary"
-            [disabled]="!form.valid"
-            (click)="onLogin(form)"
+              class="login"
+              color="secondary"
+              [disabled]="!form.valid"
+              (click)="onLogin(form)"
             >
               Login
-            </ion-button> 
+            </ion-button>
           </ion-col>
 
           <ion-col>
@@ -61,13 +83,13 @@
               [routerLink]="['/register']"
               color="light"
               class="register ion-float-right"
-              >
-                Register <ion-icon name="arrow-forward"></ion-icon>
+            >
+              Register <ion-icon name="arrow-forward"></ion-icon>
             </ion-button>
           </ion-col>
         </ion-row>
-        
-        <br>
+
+        <br />
         <ion-row>
           <ion-col>
             <ion-fab-button color="danger">
@@ -97,4 +119,3 @@
     </ion-card>
   </ion-grid>
 </ion-content>
-

@@ -15,6 +15,9 @@
 
 .card-login {
     background: white !important;
+    .forgot-password {
+        display: contents;
+    }
     .login {
         width: 130px;
     }

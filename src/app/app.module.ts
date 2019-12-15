@@ -24,6 +24,7 @@ import { AuthService } from './shared/services/auth.service';
     AuthService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  exports: [],
 })
 export class AppModule {}
