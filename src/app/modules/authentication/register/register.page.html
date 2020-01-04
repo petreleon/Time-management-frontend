@@ -85,18 +85,18 @@
             <ion-label position="floating">Email</ion-label>
             <ion-input
               type="email"
-              formControlName="emailAddress"
+              formControlName="email"
               pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
             ></ion-input>
           </ion-item>
           <div
-            *ngIf="form.get('emailAddress').hasError('pattern') && (!form.get('emailAddress').pristine || form.get('emailAddress').dirty || form.get('emailAddress').touched)"
+            *ngIf="form.get('email').hasError('pattern') && (!form.get('email').pristine || form.get('email').dirty || form.get('email').touched)"
             class="error-msg"
           >
             Email pattern is invalid
           </div>
           <div
-            *ngIf="form.get('emailAddress').hasError('required') && (!form.get('emailAddress').pristine || form.get('emailAddress').dirty || form.get('emailAddress').touched)"
+            *ngIf="form.get('email').hasError('required') && (!form.get('email').pristine || form.get('email').dirty || form.get('email').touched)"
             class="error-msg"
           >
             Email is required

@@ -5,13 +5,13 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
-import { LoginPage } from './login.page';
+import { ChangePasswordPage } from './change-password.page';
 import { HttpClientModule } from '@angular/common/http';
 
 const routes: Routes = [
   {
     path: '',
-    component: LoginPage
+    component: ChangePasswordPage
   }
 ];
 
@@ -24,6 +24,8 @@ const routes: Routes = [
     ReactiveFormsModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [LoginPage],
+  declarations: [ChangePasswordPage],
+  exports: [ChangePasswordPage],
+  entryComponents: [ChangePasswordPage]
 })
-export class LoginPageModule {}
+export class ChangePasswordPageModule {}

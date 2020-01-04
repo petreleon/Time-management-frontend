@@ -1,9 +1,25 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>task</ion-title>
+    <ion-buttons slot="primary">
+      <ion-button (click)="logout()">
+        <ion-icon slot="icon-only" name="log-out"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <ion-grid>
+    <!-- <form [formGroup]="form">
+      <ion-row>
+        <ion-col>
+          <ion-item class="ion-no-padding">
+            <ion-label position="floating">Task name</ion-label>
+            <ion-input type="text" formControlName="name"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </form> -->
+  </ion-grid>
 </ion-content>

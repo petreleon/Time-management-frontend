@@ -2,6 +2,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, NgForm } from '@angular/forms';
 import { LoginModel } from '../../../models/login.model';
 import { AuthService } from '../../../shared/services/auth.service';
+import { Router } from '@angular/router';
+import { APPROUTES } from 'src/app/app.routes.strings';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +16,8 @@ export class LoginPage implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) {
     this.form = this.formBuilder.group({
       email: ['', Validators.required],
@@ -32,11 +35,8 @@ export class LoginPage implements OnInit {
     };
 
     this.authService.login(data).subscribe(
-      result => {
-        console.log(result);
-      },
-      error => {
-        this.form.setErrors({ invalidCredentiales: true });
+      (response) => {
+        this.router.navigate([`${APPROUTES.tabs}/${[APPROUTES.task]}`]);
       }
     );
   }

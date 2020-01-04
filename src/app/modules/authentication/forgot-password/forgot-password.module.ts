@@ -6,7 +6,6 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { HttpClientModule } from '@angular/common/http';
-import { AuthService } from 'src/app/shared/services/auth.service';
 import { ForgotPasswordPage } from './forgot-password.page';
 
 const routes: Routes = [
@@ -26,7 +25,6 @@ const routes: Routes = [
     RouterModule.forChild(routes)
   ],
   declarations: [ForgotPasswordPage],
-  providers: [AuthService],
   exports: [ForgotPasswordPage],
   entryComponents: [ForgotPasswordPage]
 })

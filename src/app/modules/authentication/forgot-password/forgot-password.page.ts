@@ -26,55 +26,34 @@ export class ForgotPasswordPage implements OnInit {
   ) {
     this.form = this.formBuilder.group(
       {
-        oldPassword: ['', Validators.required],
-        newPassword: [
+        email: [
           '',
           [
             Validators.required,
             Validators.pattern(
-              Constants.PASSWORD_PATTERN
+              Constants.EMAIL_PATTERN
             )
           ]
         ],
-        confirmPassword: ['', Validators.required]
-      },
-      { validator: this.matchingPasswords('newPassword', 'confirmPassword') }
+      }
     );
   }
 
   ngOnInit() {}
 
-  onChangePassword(form: NgForm) {
+  onGeneratePasswordResetLink(form: NgForm) {
     console.log(form);
-    const data: ChangePasswordModel = {
-      oldPassword: form.value.oldPassword,
-      newPassword: form.value.newPassword,
-      confirmPassword: form.value.confirmPassword
-    };
+    // const data: ChangePasswordModel = {
+    //   oldPassword: form.value.oldPassword,
+    //   newPassword: form.value.newPassword,
+    //   confirmPassword: form.value.confirmPassword
+    // };
+    const email: string = form.value.email;
 
-    this.authService.changePassword(data).subscribe(
+    this.authService.generatePasswordResetLink(email).subscribe(
       result => {
         console.log(result);
-      },
-      error => {
-        this.form.setErrors({ invalidCredentiales: true });
       }
     );
-  }
-
-  private matchingPasswords(
-    passwordKey: string,
-    confirmPasswordKey: string
-  ): ValidatorFn {
-    return (group: FormGroup): { [key: string]: any } => {
-      const password = group.controls[passwordKey];
-      const confirmPassword = group.controls[confirmPasswordKey];
-
-      if (password.value !== confirmPassword.value) {
-        return {
-          mismatchedPasswords: true
-        };
-      }
-    };
   }
 }

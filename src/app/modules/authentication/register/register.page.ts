@@ -10,6 +10,8 @@ import { RegisterModel } from '../../../models/register.model';
 import { AuthService } from '../../../shared/services/auth.service';
 import { maxLengthValidator } from 'src/app/shared/validators/max-length.validator';
 import { Constants } from 'src/app/shared/utils/data.constants';
+import { Router } from '@angular/router';
+import { APPROUTES } from 'src/app/app.routes.strings';
 
 @Component({
   selector: 'app-register',
@@ -22,7 +24,8 @@ export class RegisterPage implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) {
     this.form = this.formBuilder.group(
       {
@@ -55,7 +58,7 @@ export class RegisterPage implements OnInit {
             )
           ]
         ],
-        emailAddress: [
+        email: [
           '',
           [
             Validators.required,
@@ -87,13 +90,13 @@ export class RegisterPage implements OnInit {
       firstName: form.value.firstName,
       lastName: form.value.lastName,
       userName: form.value.userName,
-      emailAddress: form.value.emailAddress,
+      email: form.value.email,
       password: form.value.password,
       confirmPassword: form.value.confirmPassword
     };
 
-    this.authService.register(data).subscribe(result => {
-      console.log(result);
+    this.authService.register(data).subscribe(response => {
+      this.router.navigate([`${APPROUTES.login}`]);
     });
   }
 
